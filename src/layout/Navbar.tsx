@@ -7,9 +7,7 @@ import { cn } from "@/lib/utils";
 
 import {
   Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
+ 
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import {
@@ -28,6 +26,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import Link from "next/link";
+import { ModeToggle } from "./Toogler";
 
 interface MenuItem {
   title: string;
@@ -78,6 +77,10 @@ const Navbar = ({
       title: "Contact",
       url: "/contact",
     },
+    {
+      title: "About",
+      url: "/about",
+    },
   ],
   auth = {
     login: { title: "Login", url: "/login" },
@@ -111,6 +114,7 @@ const Navbar = ({
             </div>
           </div>
           <div className="flex gap-2">
+            <ModeToggle/>
             <Button asChild variant="outline" size="sm">
               <Link href={auth.login.url}>{auth.login.title}</Link>
             </Button>
@@ -131,6 +135,7 @@ const Navbar = ({
                 alt={logo.alt}
               />
             </a>
+            
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant="outline" size="icon">
@@ -147,7 +152,9 @@ const Navbar = ({
                         alt={logo.alt}
                       />
                     </a>
+                     
                   </SheetTitle>
+                  
                 </SheetHeader>
                 <div className="flex flex-col gap-6 p-4">
                   <Accordion
@@ -159,6 +166,7 @@ const Navbar = ({
                   </Accordion>
 
                   <div className="flex flex-col gap-3">
+                    <ModeToggle/>
                     <Button asChild variant="outline">
                       <a href={auth.login.url}>{auth.login.title}</a>
                     </Button>
