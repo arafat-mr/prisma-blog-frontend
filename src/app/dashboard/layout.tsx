@@ -51,3 +51,4 @@ export default function DashboardLayout() {
     </SidebarProvider>
   )
 }
+console.log('ok');
