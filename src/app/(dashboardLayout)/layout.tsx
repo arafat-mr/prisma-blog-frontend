@@ -13,11 +13,24 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
+import { roles } from "@/constants/roles"
+import { userService } from "@/services/user.service"
 import React from "react"
-const userInfo={
-  role :'admin'
-}
-export default function DashboardLayout({children,admin,user}:{children:React.ReactNode;admin:React.ReactNode;user:React.ReactNode}) {
+import { da } from "zod/v4/locales"
+// const userInfo={
+//   role :'admin'
+// }
+
+
+
+export default async function DashboardLayout({children,admin,user}:{children:React.ReactNode;admin:React.ReactNode;user:React.ReactNode}) {
+
+
+  const {data}= await userService.getSession()
+
+console.log('data is',data);
+
+const userInfo=  data.user
   return (
     <SidebarProvider>
       <AppSidebar user={userInfo} />
@@ -46,7 +59,7 @@ export default function DashboardLayout({children,admin,user}:{children:React.Re
   {/* {children}
    */}
   
-  {userInfo.role === 'admin'?admin:user}
+  {userInfo.role === roles.admin?admin:user}
         </div>
       </SidebarInset>
     </SidebarProvider>

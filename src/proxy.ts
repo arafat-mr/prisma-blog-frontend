@@ -23,25 +23,25 @@ export async function  proxy(request :NextRequest){
         return NextResponse.redirect(new URL('/login',request.url))
     }
    
-    if(!isAuthenticated && (pathName.startsWith('/user-dash') || pathName.startsWith('/admin-dash'))){
-        return NextResponse.redirect(new URL('/login',request.url))
-    }
+    // if(!isAuthenticated && (pathName.startsWith('/dashboard') || pathName.startsWith('/admin-dash'))){
+    //     return NextResponse.redirect(new URL('/login',request.url))
+    // }
    
    //user
-    if(isAdmin && pathName.startsWith('/dashboard')){
-        return NextResponse.redirect(new URL('/user-dash',request.url))
-    }
-    if(isAdmin && pathName.startsWith('/admin-dash')){
-        return NextResponse.redirect(new URL('/user-dash',request.url))
-    }
+    // if(isAdmin && pathName.startsWith('/dashboard')){
+    //     return NextResponse.redirect(new URL('/user-dash',request.url))
+    // }
+    // if(isAdmin && pathName.startsWith('/admin-dash')){
+    //     return NextResponse.redirect(new URL('/user-dash',request.url))
+    // }
     
     //admin
-    if(!isAdmin && pathName.startsWith('/dashboard')){
-        return NextResponse.redirect(new URL('/admin-dash',request.url))
-    }
-    if(!isAdmin && pathName.startsWith('/user-dash')){
-        return NextResponse.redirect(new URL('/admin-dash',request.url))
-    }
+    // if(!isAdmin && pathName.startsWith('/dashboard')){
+    //     return NextResponse.redirect(new URL('/admin-dash',request.url))
+    // }
+    // if(!isAdmin && pathName.startsWith('/user-dash')){
+    //     return NextResponse.redirect(new URL('/admin-dash',request.url))
+    // }
     
     return NextResponse.next()
 }
